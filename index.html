@@ -30,7 +30,7 @@
           <li><a href="https://github.com/AaltoWorks/test-wiki">View On <strong>GitHub</strong></a></li>
         </ul>
         
-        <code data-gist-id="e21da2c7d0d1f5cd2c1d" data-gist-file="gist" data-gist-hide-footer="true" data-gist-hide-line-numbers="true"></code>
+        <div data-gist-id='e21da2c7d0d1f5cd2c1d'></div>
 
       </header>
       <section>
@@ -76,6 +76,7 @@
           dataType: 'jsonp'
         }).success( function(gistdata) {
           var content = gistdata.data.files[filename].content;
+          $('[data-gist-id='+gistId).html(content);
           console.info(content)
         }).error( function(e) {
           console.info(e)

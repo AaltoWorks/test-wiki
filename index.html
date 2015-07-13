@@ -71,7 +71,7 @@
       var filename = 'gist';
       $(function() {
         $.ajax({
-          url: 'https://api.github.com/gists/'+gistid,
+          url: 'https://api.github.com/gists/'+gistId,
           type: 'GET',
           dataType: 'jsonp'
         }).success( function(gistdata) {

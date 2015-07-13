@@ -10,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
-
+  
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -66,5 +65,22 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    
+    <script>
+      var gistId = 'e21da2c7d0d1f5cd2c1d';
+      var filename = 'gist';
+      $(function() {
+        $.ajax({
+          url: 'https://api.github.com/gists/'+gistid,
+          type: 'GET',
+          dataType: 'jsonp'
+        }).success( function(gistdata) {
+          var content = gistdata.data.files[filename].content;
+          console.info(content)
+        }).error( function(e) {
+          console.info(e)
+        });
+      });
+    </script>
   </body>
 </html>

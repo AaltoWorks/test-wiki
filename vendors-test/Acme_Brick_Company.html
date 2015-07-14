@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Aalto Wiki</title>
+
+    <link rel="stylesheet" href="http://aaltoworks.github.io/test-wiki/stylesheets/styles.css">
+    <link rel="stylesheet" href=".http://aaltoworks.github.io/test-wiki/stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href='http://aaltoworks.github.io/test-wiki/index.html'>Aalto</a> > <a href='http://aaltoworks.github.io/test-wiki/vendors-test.html'>vendors-test</a></h1>
+
+      </header>
+      <section>
+
+        <a href='https://gist.github.com/steveodom/c99721bf366fc674fc76/edit' style='float: right' class='btn'>edit</a>
+
+       <!-- gist date embeds here.  -->
+       <div id='slack-content' data-gist-id='c99721bf366fc674fc76'></div>
+
+       </section>
+     <footer>
+       <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+     </footer>
+   </div>
+   <script src="javascripts/scale.fix.js"></script>
+
+   <script>
+         var $target = $('#slack-content');
+         var gist_id = $target.data('gist-id');
+         var filename = 'gist.html';
+         $(function() {
+           $.ajax({
+             url: 'https://api.github.com/gists/'+gist_id,
+             type: 'GET',
+             dataType: 'jsonp'
+           }).success( function(gistdata) {
+             var content = gistdata.data.files[filename].content;
+             $target.html(content);
+           }).error( function(e) {
+             console.info(e)
+           });
+         });
+       </script>
+
+ </body>
+</html>

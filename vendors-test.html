@@ -39,6 +39,7 @@
     <script>
       var $target = $('#slack-content');
       var gist_id = $target.data('gist-id');
+      console.info("gist_id", gist_id)
       var filename = 'gist.html';
       $(function() {
         $.ajax({
@@ -47,6 +48,7 @@
           dataType: 'jsonp'
         }).success( function(gistdata) {
           var content = gistdata.data.files[filename].content;
+          console.info(content)
           $target.html(content);
         }).error( function(e) {
           console.info(e)

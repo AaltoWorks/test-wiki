@@ -41,7 +41,6 @@
       $(function() {
         var $target = $('#slack-content');
         var target_id = $target.data('gist-id');
-        console.info("gist_id", target_id)
         var filename = 'gist.html';
           $.ajax({
             url: 'https://api.github.com/gists/'+target_id,
@@ -49,7 +48,6 @@
             dataType: 'jsonp'
           }).success( function(gistdata) {
             var content = gistdata.data.files[filename].content;
-            console.info(content)
             $target.html(content);
           }).error( function(e) {
             console.info(e)

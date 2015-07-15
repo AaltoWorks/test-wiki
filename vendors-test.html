@@ -18,18 +18,16 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href='http://aaltoworks.github.io/test-wiki/index.html'>Aalto</a></h1>
+        <h1><a href='{{:home_link }}'>Aalto</a></h1>
         <p>Categories</p>
-        <ul>
-          <li><a href=''>How To's</a></li>
-          <li><a href=''>Vendors</a></li>
-        </ul>
+
+        <ul data-gist-id='eefb17efa9a9f2f5b8c8'></ul>
       </header>
       <section>
-        <h3>Vendors-test Pages</h3>
-
+        <h3>{{:name }} Pages</h3>
+        
         <!-- gist date embeds here.  -->
-        <div id='slack-content' data-gist-id='c2406b369d3ebff5b565'></div>
+        <ul id='slack-content' data-gist-id='{{:gist_id }}'></ul>
 
       </section>
       <footer>
@@ -54,7 +52,23 @@
           console.info(e)
         });
       });
-    </script>
 
+      var $directory = $('[data-gist-id=eefb17efa9a9f2f5b8c8]');
+      var gist_id = 'eefb17efa9a9f2f5b8c8';
+      var filename = 'gist.html';
+      $(function() {
+        $.ajax({
+          url: 'https://api.github.com/gists/'+gist_id,
+          type: 'GET',
+          dataType: 'jsonp'
+        }).success( function(gistdata) {
+          var content = gistdata.data.files[filename].content;
+          $directory.html(content);
+        }).error( function(e) {
+          console.info(e)
+        });
+      });
+    </script>
+    
   </body>
 </html>

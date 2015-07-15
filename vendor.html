@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Aalto Wiki</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href='http://aaltoworks.github.io/test-wiki/index.html'>Aalto</a></h1>
+        <p>Categories</p>
+
+        <ul id='directory-content' data-gist-id='eefb17efa9a9f2f5b8c8'></ul>
+      </header>
+      <section>
+        <h3>Vendor Pages</h3>
+
+        <!-- gist date embeds here.  -->
+        <ul id='slack-content' data-gist-id='d199bc43ceaf9a71e89c'></ul>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+    <script>
+      $(function() {
+        var $target = $('#slack-content');
+        var target_id = $target.data('gist-id');
+        var filename = 'gist.html';
+          $.ajax({
+            url: 'https://api.github.com/gists/'+target_id,
+            type: 'GET',
+            dataType: 'jsonp'
+          }).success( function(gistdata) {
+            var content = gistdata.data.files[filename].content;
+            $target.html(content);
+          }).error( function(e) {
+            console.info(e)
+          });
+
+          var $directory = $('#directory-content');
+          var directory_id = 'eefb17efa9a9f2f5b8c8';
+          var filename = 'gist.html';
+
+          $.ajax({
+            url: 'https://api.github.com/gists/'+directory_id,
+            type: 'GET',
+            dataType: 'jsonp'
+          }).success( function(gistdata) {
+            var content = gistdata.data.files[filename].content;
+            $directory.html(content);
+          }).error( function(e) {
+            console.info(e)
+          });
+      });
+    </script>
+
+  </body>
+</html>

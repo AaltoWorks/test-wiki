@@ -38,12 +38,12 @@
 
     <script>
       var $target = $('#slack-content');
-      var gist_id = $target.data('gist-id');
-      console.info("gist_id", gist_id)
+      var target_id = $target.data('gist-id');
+      console.info("gist_id", target_id)
       var filename = 'gist.html';
       $(function() {
         $.ajax({
-          url: 'https://api.github.com/gists/'+gist_id,
+          url: 'https://api.github.com/gists/'+target_id,
           type: 'GET',
           dataType: 'jsonp'
         }).success( function(gistdata) {
@@ -56,11 +56,11 @@
       });
       
       var $directory = $('#directory-content');
-      var gist_id = 'eefb17efa9a9f2f5b8c8';
+      var directory_id = 'eefb17efa9a9f2f5b8c8';
       var filename = 'gist.html';
       $(function() {
         $.ajax({
-          url: 'https://api.github.com/gists/'+gist_id,
+          url: 'https://api.github.com/gists/'+directory_id,
           type: 'GET',
           dataType: 'jsonp'
         }).success( function(gistdata) {

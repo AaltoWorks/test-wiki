@@ -65,7 +65,7 @@
             dataType: 'jsonp'
           }).success( function(gistdata) {
             var content = gistdata.data.files[filename].content;
-            //$directory.html(content);
+            $directory.html(content);
           }).error( function(e) {
             console.info(e)
           });
